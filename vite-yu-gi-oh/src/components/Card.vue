@@ -1,7 +1,7 @@
 <template>
   <div class="card-grid">
-    <div v-for="card in card" :key="card.id" class="card">
-      <img :src="card.imageUrl" :alt="card.name" class="card-image" />
+    <div  :key="card.id" class="card">
+      <img :src="card.card_images[0].image_url" :alt="card.name" class="card-image" />
       <h3 class="card-title">{{ card.name }}</h3>
       <p class="card-text">{{ card.description }}</p>
     </div>
