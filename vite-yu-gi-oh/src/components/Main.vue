@@ -19,15 +19,19 @@
 
     <div class="container-main">
 
+      <div class="found"><h3>Found 39 cards</h3></div>
+
 
       <ul class="cards">
-
+        
 
         <Card v-for="card in cards" :key="card.id" :card="card" />
 
       </ul>
     </div>
+    
   </main>
+
 </template>
 
 <script>
@@ -64,32 +68,44 @@ export default {
 <style lang="scss" scoped>
 .main {
   padding: 50px 0;
-  background-color: #D48F38;
+  background-color: black;
 
 
 }
 .container-main{
-  width: 1000px;
-  margin-left: 500px;
+  width: 1200px;
+  margin-left: 350px;
 }
 .cards {
   display: grid;
-  gap: 40px;
   grid-template-columns: repeat(4,1fr);
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.586);
+  padding: 50px;
 
+}
+
+.found{
+  color: white;
+  position: relative;
+  width: 1075px;
+  left: 70px;
+  top: 75px;
+  background-color: rgb(47, 47, 47);
+  text-align: left;
+  padding: 10px;
+  
 }
 
 /**MENU RULES */
 
 .menu {
   background-color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   display: flex;
   width: 120px;
-  margin-left: 550px;
+  margin-left: 360px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .dropdown-content {
