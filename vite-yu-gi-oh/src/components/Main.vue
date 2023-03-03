@@ -1,12 +1,28 @@
 <template>
     <main class="main">
-      <div class="container">
+
+      <!-- Menù dropdown -->
+      <div class="menu">
+         <ul>
+           <li class="dropdown">
+           <a href="#" class="alien">Alien</a> <i class="fa-solid fa-chevron-down"></i>
+           <div class="dropdown-content">
+             <a href="#">Fedele della luce</a>
+             <a href="#">Ala Nera</a>
+             <a href="#">Gladiatore Bestia</a>
+           </div>
+           </li>
+          </ul>
+        </div>
+
+        <!-- FINE MENù -->
+      
+      <div class="container-main">
+
+
         <ul class="characters">
   
-          <!-- <li class="character card" v-for="character in characters" :key="character.id">
-            <img :src="character.image" alt="">
-            <h3 class="characater__name">{{ character.name }}</h3>
-          </li> -->
+          
           <Character v-for="element in store.characters" :key="element.id" :character="element" />
   
         </ul>
@@ -40,7 +56,7 @@
           console.log('fetching data')
           // fare la chiamata in get all'endpoint: 
           axios
-            .get('https://rickandmortyapi.com/api/character')
+            .get('https://db.ygoprodeck.com/api/character')
             .then((res) => {
               console.log(res)
               console.log(res.data)
@@ -63,11 +79,60 @@
   
   <style lang="scss" scoped>
   .main {
-    padding: 100px 0;
+    padding: 50px 0;
+    background-color: #D48F38;
+   
+    
+  }
+  .container-main{
+    width: 1000px;
+    margin-left: 500px;
   }
   .characters {
     display: grid;
     gap: 40px;
     grid-template-columns: repeat(4,1fr);
+    background-color: white;
+    
   }
+
+  /**MENU RULES */
+
+  .menu {
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+    width: 120px;
+    margin-left: 550px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  background-color: #f9f9f9;
+  color: #333;
+  text-decoration: none;
+  text-align: left;
+}
+
+.dropdown-content a:hover{
+  color: red;
+}
+
+.alien {
+  padding-right: 40px;
+}
+  
   </style>
