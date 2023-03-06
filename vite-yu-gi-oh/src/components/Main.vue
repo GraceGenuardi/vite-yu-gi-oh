@@ -1,22 +1,14 @@
 <template>
   <main class="main">
 
-    <!-- INPUT PER RICERCARE LA CARTA IN BASE AL NOME -->
-    <Filters @filter="fetchCards" />
+   
 
-    
+
     <!-- Menù dropdown -->
-    <div class="menu">
-      <ul>
-        <li class="dropdown">
-          <a href="#" class="alien">Alien</a> <i class="fa-solid fa-chevron-down"></i>
-          <div class="dropdown-content">
-            <a href="#">Fedele della luce</a>
-            <a href="#">Ala Nera</a>
-            <a href="#">Gladiatore Bestia</a>
-          </div>
-        </li>
-      </ul>
+    <div class="filter">
+       <!-- INPUT PER RICERCARE LA CARTA IN BASE AL NOME -->
+       <Filters @filter="fetchCards(filterName)" />
+        <i class="fa-solid fa-magnifying-glass"></i>
     </div>
 
     <!-- FINE MENù -->
@@ -41,26 +33,32 @@
 <script>
 import axios from 'axios'
 import Card from './Card.vue'
+import Filters from './Filters.vue'
+
+
 export default {
   components: {
-    Card
+    Card,
+    Filters
   },
   data() {
     return {
-      cards: []
+      cards: [],
+      filterName: ""
     }
   },
   methods: {
     fetchCards() {
-      console.log('fetching data')
-      axios
-        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-        .then((res) => {
-          console.log(res)
-          console.log(res.data)
-          this.cards = res.data.data
-        })
-    }
+  console.log('fetching data')
+  const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&fname=${this.filterName}`;
+  axios
+    .get(url)
+    .then((res) => {
+      console.log(res)
+      console.log(res.data)
+      this.cards = res.data.data
+    })
+}
   },
   created() {
     this.fetchCards()
@@ -95,35 +93,20 @@ export default {
   
 }
 /**MENU RULES */
-.menu {
-  background-color: white;
+.filter {
+  background-color: rgb(255, 104, 10);
   margin-bottom: 25px;
   display: flex;
-  width: 120px;
+  width: 220px;
   margin-left: 360px;
   padding: 5px;
   border-radius: 5px;
 }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
+
+.filter i{
+  color: white;
+  margin-top: 3px;
+  margin-right: 3px;
 }
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  background-color: #f9f9f9;
-  color: #333;
-  text-decoration: none;
-  text-align: left;
-}
-.dropdown-content a:hover{
-  color: red;
-}
-.alien {
-  padding-right: 40px;
-}
+
 </style>
