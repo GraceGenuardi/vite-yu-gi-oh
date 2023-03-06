@@ -1,6 +1,10 @@
 <template>
   <main class="main">
 
+    <!-- INPUT PER RICERCARE LA CARTA IN BASE AL NOME -->
+    <Filters @filter="fetchCards" />
+
+    
     <!-- Menù dropdown -->
     <div class="menu">
       <ul>
@@ -37,7 +41,6 @@
 <script>
 import axios from 'axios'
 import Card from './Card.vue'
-
 export default {
   components: {
     Card
@@ -69,8 +72,6 @@ export default {
 .main {
   padding: 50px 0;
   background-color: black;
-
-
 }
 .container-main{
   width: 1200px;
@@ -81,9 +82,7 @@ export default {
   grid-template-columns: repeat(4,1fr);
   background-color: rgba(255, 255, 255, 0.586);
   padding: 50px;
-
 }
-
 .found{
   color: white;
   position: relative;
@@ -95,9 +94,7 @@ export default {
   padding: 10px;
   
 }
-
 /**MENU RULES */
-
 .menu {
   background-color: white;
   margin-bottom: 25px;
@@ -107,17 +104,14 @@ export default {
   padding: 5px;
   border-radius: 5px;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .dropdown-content a {
   display: block;
   padding: 10px;
@@ -126,11 +120,9 @@ export default {
   text-decoration: none;
   text-align: left;
 }
-
 .dropdown-content a:hover{
   color: red;
 }
-
 .alien {
   padding-right: 40px;
 }
