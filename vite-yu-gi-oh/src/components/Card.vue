@@ -36,6 +36,10 @@ default: () => ({})
   width: 250px;
 }
 
+.card:hover{
+  background-color: #f67124; 
+}
+
 .card-image {
   width: 300px;
   height: 350px;
