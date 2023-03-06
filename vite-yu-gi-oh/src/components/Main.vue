@@ -8,6 +8,8 @@
     <div class="filter">
        <!-- INPUT PER RICERCARE LA CARTA IN BASE AL NOME -->
        <Filters @filter="fetchCards(filterName)" />
+
+       <!-- ICONA -->
         <i class="fa-solid fa-magnifying-glass"></i>
     </div>
 
